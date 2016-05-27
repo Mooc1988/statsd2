@@ -16,7 +16,7 @@ function ConsoleBackend(stats, config) {
 
 ConsoleBackend.prototype.flush = function (timestamp, metrics) {
     console.log('Flushing stats at ', new Date(timestamp * 1000).toString());
-    console.log('Process time is ', metrics.processing_time);
+    console.log(`Process time is ${metrics.processing_time} ms`);
     var out = {
         counters: metrics.counters,
         timers: metrics.timers,
