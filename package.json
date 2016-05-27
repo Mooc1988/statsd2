@@ -1,0 +1,22 @@
+{
+  "name": "statsd2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint ./",
+    "start": "node bootstrap.js"
+  },
+  "author": "Frank",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "lodash": "^4.13.1",
+    "mathjs": "^3.2.1",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.9.1"
+  },
+  "devDependencies": {
+    "eslint": "2.8.0"
+  }
+}
