@@ -5,7 +5,7 @@
 'use strict';
 const _ = require('lodash');
 const helpers = require('./helpers');
-const {metricsReceived, badLinesReceived} = require('../actions/status');
+const {metricsReceived, packetReceived, badLinesReceived}= require('../actions/status');
 const {
     processTimers, processGauges, processSet, processCount,
     processCountersRate, processTimersAggregation, processClear
@@ -13,6 +13,10 @@ const {
 
 module.exports = (stats) => {
     let store = stats.store;
+
+    stats.on('package_received', function () {
+        store.dispatch(packetReceived());
+    });
 
     stats.on('metrics_received', function (msg) {
         store.dispatch(metricsReceived());
@@ -52,7 +56,7 @@ module.exports = (stats) => {
         store.dispatch(processTimersAggregation(metrics.timers, metrics.timer_counters));
         metrics = store.getState().metrics;
         store.dispatch(processClear());
-        metrics['processing_time'] = Date.now() - startTime;
+        metrics['processing_time'] = Date.now() - startTime; //记录数据处理时间
         stats.emit('flush_to_backend', metrics);
     });
 };

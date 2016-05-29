@@ -10,7 +10,6 @@ const {createStore, applyMiddleware} =require('redux');
 const config = require('./config');
 const servers = require('./servers');
 const rootReducer = require('./reducers');
-const {packetReceived} = require('./actions/status');
 const loadDispatcher = require('./core/dispatcher');
 const loggerMid = require('./middleware/logger');
 
@@ -77,7 +76,7 @@ class Stats extends EventEmitter {
         } else {
             metrics = [metrics];
         }
-        this.store.dispatch(packetReceived());
+        this.emit('package_received');
         _.each(metrics, (metric) => {
             if (metric.length > 0) {
                 this.emit('metrics_received', metric);
