@@ -20,12 +20,11 @@ class Stats extends EventEmitter {
         this.startTime = new Date().getTime();
         //debug模式下,开启日志中间件
         if (config.debug) {
-            let storeCreator = applyMiddleware(loggerMid)(createStore);
-            this.store = storeCreator(rootReducer);
+            let createStoreWithMiddleWare = applyMiddleware(loggerMid)(createStore);
+            this.store = createStoreWithMiddleWare(rootReducer);
         } else {
             this.store = createStore(rootReducer);
         }
-
     }
 
     start() {
