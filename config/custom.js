@@ -4,7 +4,7 @@
 
 //用户配置文件
 module.exports = {
-    debug: false
-};
+  debug: false
+}
 
 

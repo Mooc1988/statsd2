@@ -4,8 +4,8 @@
 
 
 module.exports = Object.assign(
-    {},
-    require('./default'),
-    require('./custom')
-);
+  {},
+  require('./default'),
+  require('./custom')
+)
 
