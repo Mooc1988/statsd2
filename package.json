@@ -17,6 +17,6 @@
     "redux-actions": "^2.6.1"
   },
   "devDependencies": {
-    "eslint": "2.8.0"
+    "eslint": "6.6.0"
   }
 }
